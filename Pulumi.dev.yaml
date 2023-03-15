@@ -1,0 +1,6 @@
+config:
+  azure-native:location: northeurope
+  varsling:appRegistrationName: varslingTjeneste
+  varsling:ownerId: torebroberg5@gmail.com
+  varsling:sqlPassword: kfkjkj@1
+  varsling:tenantId: a1384ed8-c915-4451-9bc6-306e28afece2
