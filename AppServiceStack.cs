@@ -26,7 +26,7 @@ class AppServiceStack : Stack
                 Name = SkuName.Standard_LRS,
             },
         });
-
+        /*
         var appServicePlan = new AppServicePlan("asp", new AppServicePlanArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -36,7 +36,7 @@ class AppServiceStack : Stack
                 Tier = "Free",
                 Name = "F1",
             },
-        });
+        });*/
 
         var container = new BlobContainer("zips", new BlobContainerArgs
         {
@@ -45,13 +45,7 @@ class AppServiceStack : Stack
             ResourceGroupName = resourceGroup.Name,
         });
 
-        var blob2 = new Blob("appservice-blob", new BlobArgs
-        {
-            ResourceGroupName = resourceGroup.Name,
-            AccountName = storageAccount.Name,
-            ContainerName = container.Name,
-            Type = BlobType.Block
-        });
+       
 
         var blob = new Blob("appservice-blob", new BlobArgs
         {
@@ -62,7 +56,7 @@ class AppServiceStack : Stack
             Source = new FileArchive("wwwroot"),
         });
 
-        var codeBlobUrl = SignedBlobReadUrl(blob, container, storageAccount, resourceGroup);
+        //var codeBlobUrl = SignedBlobReadUrl(blob, container, storageAccount, resourceGroup);
 
         var appInsights = new Component("appInsights", new ComponentArgs
         {
@@ -97,7 +91,7 @@ class AppServiceStack : Stack
                 Name = "S0"
             }
         });
-        
+        /*
         var app = new WebApp("app", new WebAppArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -157,7 +151,7 @@ class AppServiceStack : Stack
             ServicePrincipalId = exampleServicePrincipal.Id,
         });*/
     }
-
+    /*
     private static Output<string> SignedBlobReadUrl(Blob blob, BlobContainer container, StorageAccount account, ResourceGroup resourceGroup)
     {
         var serviceSasToken = ListStorageAccountServiceSAS.Invoke(new ListStorageAccountServiceSASInvokeArgs
@@ -179,5 +173,5 @@ class AppServiceStack : Stack
         return Output.Format($"https://{account.Name}.blob.core.windows.net/{container.Name}/{blob.Name}?{serviceSasToken}");
     }
 
-    [Output] public Output<string> Endpoint { get; set; }
+    [Output] public Output<string> Endpoint { get; set; }*/
 }
