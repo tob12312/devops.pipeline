@@ -45,6 +45,14 @@ class AppServiceStack : Stack
             ResourceGroupName = resourceGroup.Name,
         });
 
+        var blob2 = new Blob("appservice-blob", new BlobArgs
+        {
+            ResourceGroupName = resourceGroup.Name,
+            AccountName = storageAccount.Name,
+            ContainerName = container.Name,
+            Type = BlobType.Block
+        });
+
         var blob = new Blob("appservice-blob", new BlobArgs
         {
             ResourceGroupName = resourceGroup.Name,
