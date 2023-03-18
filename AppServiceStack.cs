@@ -97,7 +97,7 @@ class AppServiceStack : Stack
                 Name = "S0"
             }
         });
-
+        /*
         var app = new WebApp("app", new WebAppArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -139,7 +139,7 @@ class AppServiceStack : Stack
         });
 
         this.Endpoint = app.DefaultHostName;
-
+        */
 
 /*
         var exampleApplication = new Pulumi.AzureAD.Application("exampleApplication", new()
