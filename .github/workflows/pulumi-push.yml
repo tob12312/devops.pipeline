@@ -1,0 +1,34 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Pulumi
+      uses: pulumi/actions/setup@v1
+
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Select Azure subscription
+      uses: azure/actions/cli@v1
+      with:
+        inlineScript: |
+          az account set --subscription <subscription_id>
+
+    - name: Deploy Pulumi stack
+      uses: pulumi/actions/cli@v1
+      with:
+        inlineScript: |
+          pulumi stack select dev
+          pulumi up --yes
