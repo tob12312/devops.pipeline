@@ -54,4 +54,4 @@ jobs:
           app-name: 'appfe7588f9'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B5533079268B4654A6ED2B5CC5C48B71 }}
-          package: ./wwwroot 
+          package: wwwroot 
