@@ -91,6 +91,16 @@ class AppServiceStack : Stack
                 Name = "S0"
             }
         });
+        /*
+        var exampleFunctionApp = new Azure.AppService.FunctionApp("exampleFunctionApp", new()
+        {
+            Location = storageAccount.Location,
+            ResourceGroupName = exampleResourceGroup.Name,
+            AppServicePlanId = AppServicePlan.Id,
+            StorageAccountName = storageAccount.Name,
+            StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
+        });
+        */
         
         var app = new WebApp("app", new WebAppArgs
         {
@@ -131,7 +141,7 @@ class AppServiceStack : Stack
                 },
             }
         });
-
+        
         this.Endpoint = app.DefaultHostName;
 
 
@@ -173,5 +183,5 @@ class AppServiceStack : Stack
         return Output.Format($"https://{account.Name}.blob.core.windows.net/{container.Name}/{blob.Name}?{serviceSasToken}");
     }
 
-    [Output] public Output<string> Endpoint { get; set; }*/
+    [Output] public Output<string> Endpoint { get; set; }
 }
