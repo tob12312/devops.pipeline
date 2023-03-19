@@ -26,7 +26,7 @@ class AppServiceStack : Stack
                 Name = SkuName.Standard_LRS,
             },
         });
-        /*
+        
         var appServicePlan = new AppServicePlan("asp", new AppServicePlanArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -36,7 +36,7 @@ class AppServiceStack : Stack
                 Tier = "Free",
                 Name = "F1",
             },
-        });*/
+        });
 
         var container = new BlobContainer("zips", new BlobContainerArgs
         {
@@ -56,7 +56,7 @@ class AppServiceStack : Stack
             Source = new FileArchive("wwwroot"),
         });
 
-        //var codeBlobUrl = SignedBlobReadUrl(blob, container, storageAccount, resourceGroup);
+        var codeBlobUrl = SignedBlobReadUrl(blob, container, storageAccount, resourceGroup);
 
         var appInsights = new Component("appInsights", new ComponentArgs
         {
@@ -91,7 +91,7 @@ class AppServiceStack : Stack
                 Name = "S0"
             }
         });
-        /*
+        
         var app = new WebApp("app", new WebAppArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -135,7 +135,7 @@ class AppServiceStack : Stack
         this.Endpoint = app.DefaultHostName;
 
 
-/*
+
         var exampleApplication = new Pulumi.AzureAD.Application("exampleApplication", new()
         {
             DisplayName = "example",
@@ -149,9 +149,9 @@ class AppServiceStack : Stack
         var exampleServicePrincipalTokenSigningCertificate = new Pulumi.AzureAD.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", new()
         {
             ServicePrincipalId = exampleServicePrincipal.Id,
-        });*/
+        });
     }
-    /*
+    
     private static Output<string> SignedBlobReadUrl(Blob blob, BlobContainer container, StorageAccount account, ResourceGroup resourceGroup)
     {
         var serviceSasToken = ListStorageAccountServiceSAS.Invoke(new ListStorageAccountServiceSASInvokeArgs
