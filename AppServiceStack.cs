@@ -15,7 +15,7 @@ class AppServiceStack : Stack
 {
     public AppServiceStack()
     {
-        var x = 1;
+        var x = 122;
         var resourceGroup = new ResourceGroup("varslingTjeneste");
 
         var storageAccount = new StorageAccount("sa", new StorageAccountArgs
